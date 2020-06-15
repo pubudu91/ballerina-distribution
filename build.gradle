@@ -34,7 +34,7 @@ ext {
     netLingalaZip4jVersion = "2.3.2"
     commonsIoVersion = "2.6"
     commonsLang3Version = "3.9"
-    socketVersion=project.version
+    socketVersion= project.stdlibSocketVersion
 }
 
 allprojects {
@@ -114,6 +114,14 @@ subprojects {
                 password System.getenv("packagePAT")
             }
         }
+        /* Ballerina lang staging repository */
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinalang-1586/" }
+        /* Docker staging repository */
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxdocker-1264/" }
+        /* Kubernetes staging repository */
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxkubernetes-1240/" }
+        /* AwsLambda staging repository */
+        maven { url "https://maven.wso2.org/nexus/content/repositories/orgballerinaxawslambda-1137/" }
     }
 
     configurations {
@@ -155,8 +163,6 @@ subprojects {
         kubernetesExamples "org.ballerinax.kubernetes:kubernetes-extension-examples:${kubernetesVersion}@zip"
 
         /* Standard libraries */
-        exten "org.ballerinalang:socket-native:${socketVersion}"
-        exten "org.ballerinalang:socket-test-utils:${socketVersion}"
         ballerinaStdLibs "org.ballerinalang:socket-ballerina:${socketVersion}"
 
         balCommand "org.ballerinalang:ballerina-command-distribution:${ballerinaCommandVersion}@zip"
